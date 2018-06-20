@@ -7,7 +7,7 @@ import mine from '@/components/mine'
 // import Mint from 'mint-ui';
 // Vue.use(Mint);
 // import 'mint-ui/lib/style.css'; 
-import '../assets/css/base.css'; 
+
 
 Vue.use(Router)
 

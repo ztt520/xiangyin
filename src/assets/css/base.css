@@ -167,3 +167,30 @@ body {
     -webkit-text-size-adjust: none;
     -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
 }
+/* 底部 */
+.mint-tab-item-icon {
+    width: 32px;
+    height: 32px;
+    margin: 0 auto 5px
+}
+.mint-swipe-indicator{
+    background-color: #ccc;
+    opacity: 1;
+}
+.mint-swipe-indicator.is-active {
+    background: #F35950;
+    opacity: 1;
+}
+/* 报名 */
+.mint-field-core{
+    text-align: right;
+}
+.mint-field-core::-moz-placeholder{
+    color: red;
+}
+.mint-cell-text {
+    font-family: PingFangSC-Regular;
+    font-size: 16px;
+    color: #333333;
+    line-height: 16px;
+}
