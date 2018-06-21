@@ -29,16 +29,18 @@
         <mt-swipe-item><img src="../assets/images/banner3.png" alt=""></mt-swipe-item>
       </mt-swipe>
       </div>
-      
     </div>
-    <!-- <img src="../assets/images/bg.png"> -->
-    
+    <!-- <v-footer></v-footer> -->
   </div>
 </template>
 
 <script>
+// import xFooter from "./components/footer";
 export default {
   name: "home",
+  //  components: {
+  //   xFooter:"v-footer"
+  // },
   data() {
     return {};
   },

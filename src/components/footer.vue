@@ -1,5 +1,5 @@
 <template>
-  <div id="app">
+  <div class="footer">
     <mt-tabbar v-model="selected" ref="footer">
               <mt-tab-item id="home">
                  <img slot="icon" src="./assets/images/home_tab_icon_select.png" v-if="selected == 'home'">
@@ -16,7 +16,7 @@
                 <img slot="icon" src="./assets/images/vote_tab_icon_select@1x.png" v-if="selected =='vote'">
                 <img slot="icon" src="./assets/images/vote.png" v-else>
                 <p>投票</p>
-              
+                <!-- <mt-badge type="error" size="small"></mt-badge> -->
               </mt-tab-item>
               <mt-tab-item id="mine">
                 <img slot="icon" src="./assets/images/pro_tab_icon_select.png" v-if="selected =='mine'">
@@ -24,12 +24,13 @@
                 <p>我的</p>
               </mt-tab-item>
             </mt-tabbar>
-    <router-view/>
+    <!-- <router-view/> -->
   </div>
 </template>
 
 <script>
 export default {
+  name: "footer",
   data() {
     return {
       selected: "home"
@@ -65,8 +66,8 @@ export default {
 }
 /*iPhoneX的适配*/
 @media only screen and (device-width: 375px) and (device-height: 812px) and (-webkit-device-pixel-ratio: 3) {
-    .mint-tabbar {
-      height: 5.875rem;
-    }
+  .mint-tabbar {
+    height: 5.875rem;
+  }
 }
 </style>
