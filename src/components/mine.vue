@@ -2,7 +2,7 @@
   <div class="mine">
     <mt-header title="我的" fixed></mt-header>
     <div class="mineList">
-      <router-link to="myVoice" class="mint-cell" style="margin-top:-1px;">
+      <router-link to="myVoice" class="mint-cell">
       <mt-cell title="我的作品">
         <i class="mint-cell-allow-right"></i>
       </mt-cell>
@@ -49,9 +49,5 @@ export default {
 .mineList {
   padding-top: 4rem;
 }
-.mint-cell{
-  margin-bottom: -1px;
-}
-
 </style>
 

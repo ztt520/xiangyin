@@ -1,7 +1,7 @@
 <template>
   <div class="voteDetail">
     <mt-header title="投票详情" fixed>
-       <router-link to="/" slot="left">
+       <router-link to="/mine" slot="left">
     <mt-button icon="back"></mt-button>
   </router-link>
     </mt-header>
@@ -9,12 +9,15 @@
        <div class="mint-searchbar">
           <div class="mint-searchbar-inner">
             <input placeholder="搜索地名、人名、选手编号" class="mint-searchbar-core">
+              <!-- <i class="line" style="margin-right:15px;margin-top:0;"></i> -->
              <i class="mintui mintui-search"></i>
+             <a @click="search"></a>
           </div>
         </div>
       </div>
       <div style="padding:10px 0 80px 15px; background-color: #f5f5f5;">
-        <ul class="scroll-list">
+        <mt-loadmore :top-method="loadTop" :bottom-method="loadBottom" :bottom-all-loaded="allLoaded" ref="loadmore">
+           <ul class="scroll-list">
         <li>
           <div class="ranking">
             <span>520</span>
@@ -113,6 +116,8 @@
         </li>
 
       </ul>
+        </mt-loadmore>
+       
       </div>
       <div class="noReuslt" v-if="showResult">
         <img src="../assets/images/noResult.png" alt="">
@@ -128,8 +133,21 @@ export default {
   name: "voteDetail",
   data() {
     return {
-      showResult: false,
+      showResult: false
     };
+  },
+  methods: {
+    // 搜索
+    search() {
+      alert(1);
+    },
+    loadTop() {
+      this.$refs.loadmore.onTopLoaded();
+    },
+    loadBottom() {
+  this.allLoaded = true;// 若数据已全部获取完毕
+  this.$refs.loadmore.onBottomLoaded();
+}
   }
 };
 </script>
@@ -157,10 +175,20 @@ export default {
   padding: 4rem 0.9375rem 0 0.9375rem;
   // background: hotpink;
   .mint-searchbar {
+    // position: relative;
     background: #ffffff;
     box-shadow: 0 2px 14px 0 rgba(0, 0, 0, 0.1);
-    border-radius: 12px;
+    border-radius: 24px;
     margin-bottom: 20px;
+    a {
+      position: absolute;
+      display: inline-block;
+      right: 0;
+      top: 0;
+      width: 50px;
+      height: 100%;
+      z-index: 999;
+    }
     input::-webkit-input-placeholder {
       font-family: PingFangSC-Regular;
       font-size: 14px;
@@ -243,7 +271,7 @@ export default {
         width: 100%;
         // height: 50px;
         border-radius: 50%;
-        border: 1px solid red;
+        border: 1px solid #ccc;
       }
     }
     .userInfos {
@@ -274,6 +302,13 @@ export default {
       }
     }
   }
+}
+.line {
+  display: inline-block;
+  width: 1px;
+  height: 30px;
+  margin-top: 7px;
+  background-color: #dbdbdb;
 }
 </style>
 

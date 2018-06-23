@@ -1,37 +1,68 @@
 <template>
   <div class="vote">
     <mt-header title="我要投票" fixed>
-  <router-link to="/" slot="left">
-    <mt-button icon="back"></mt-button>
-  </router-link>
   <mt-button slot="right" @click="showRule"><span class="rightText">投票规则</span></mt-button>
 </mt-header>
 <div class="nav">  
-      <mt-button size="normal" @click.native.prevent="active = 'tab-container1'">
-        <label class="mint-button-text" :class="{'active': 'tab-container1'}">全部</label>
+      <mt-button size="normal" @click.native.prevent="active = 'tab-container1'" :class="{tabActive:active=='tab-container1'}">
+        <label class="mint-button-text" >全部</label>
       </mt-button>  
-      <mt-button size="normal" @click.native.prevent="active = 'tab-container2'">
-         <label class="mint-button-text" :class="{'active': 'tab-container2'}">推荐</label>
+      <i class="line"></i>
+      <mt-button size="normal" @click.native.prevent="active = 'tab-container2'" :class="{tabActive:active=='tab-container2'}">
+         <label class="mint-button-text">推荐</label>
         </mt-button>  
     </div>  
       
     <div class="page-tab-container">  
-      <mt-tab-container class="page-tabbar-tab-container" v-model="active" swipeable>  
+      <mt-tab-container class="page-tabbar-tab-container" v-model="active">  
         <mt-tab-container-item id="tab-container1">  
               <div class="mint-searchbar">
                 <div class="mint-searchbar-inner">
                    <input placeholder="搜索地名、人名、选手编号" class="mint-searchbar-core">
-                   <i class="mintui mintui-search"></i>
+                      <i class="line" style="margin-right:15px;margin-top:0;"></i>
+                      <i class="mintui mintui-search"></i>  
                 </div>
+                <a @click="search"></a>
               </div>
               <div class="voteList">
-                <ul>
+                <mt-loadmore :top-method="loadTop" :bottom-method="loadBottom" :bottom-all-loaded="allLoaded" ref="loadmore">
+                  <ul>
                   <li  @click="addZan"> 
                     <div class="xy-avatar fl">
                       <img src="../assets/images/home.png" alt="">
                     </div>
                     <div class="heart fr">
-                      <a @click="addZan">
+                      <a @click="showAd">
+                         <img src="../assets/images/heart-active.png" alt="">
+                      </a>
+                    </div>
+                    <div style="clear:both;"></div>
+                    <div class="userInfo">
+                      <p>编号：xy1234567980</p>
+                      <p>123456789票</p>
+                    </div>
+                  </li>
+                  <li  @click="addZan"> 
+                    <div class="xy-avatar fl">
+                      <img src="../assets/images/home.png" alt="">
+                    </div>
+                    <div class="heart fr">
+                      <a @click="showAd">
+                         <img src="../assets/images/heart-active.png" alt="">
+                      </a>
+                    </div>
+                    <div style="clear:both;"></div>
+                    <div class="userInfo">
+                      <p>编号：xy1234567980</p>
+                      <p>123456789票</p>
+                    </div>
+                  </li>
+                  <li  @click="addZan"> 
+                    <div class="xy-avatar fl">
+                      <img src="../assets/images/home.png" alt="">
+                    </div>
+                    <div class="heart fr">
+                      <a @click="showAd">
                          <img src="../assets/images/heart-active.png" alt="">
                       </a>
                     </div>
@@ -57,13 +88,16 @@
                     </div>
                   </li>
                 </ul>
+                </mt-loadmore>
+               
               </div>
         </mt-tab-container-item>  
         <mt-tab-container-item id="tab-container2">  
             <div class="mint-searchbar">
                 <div class="mint-searchbar-inner">
                    <input placeholder="搜索地名、人名、选手编号" class="mint-searchbar-core">
-                   <i class="mintui mintui-search"></i>
+                    <i class="line" style="margin-right:15px;margin-top:0;"></i>
+                    <i class="mintui mintui-search"></i>  
                 </div>
               </div>
               <div class="voteList">
@@ -168,10 +202,23 @@ export default {
       active: "tab-container1",
       showDetail: false,
       showRules: false,
-      showAdvertise: false
+      showAdvertise: false,
+      allLoaded:false
+      // tabActive:true
     };
   },
   methods: {
+    loadTop() {
+      this.$refs.loadmore.onTopLoaded();
+    },
+    loadBottom() {
+      this.allLoaded = true; // 若数据已全部获取完毕
+      // this.$refs.loadmore.onBottomLoaded();
+    },
+    // 搜索
+    search() {
+      alert(1);
+    },
     showRule() {
       this.showRules = !this.showRules;
     },
@@ -228,9 +275,10 @@ export default {
     background-color: #fff;
     box-shadow: none;
     flex: 1;
-    &.active {
+    &.tabActive {
       color: #f35950;
       .mint-button-text {
+        padding-bottom: 5px;
         border-bottom: 3px solid #f35950;
       }
     }
@@ -245,6 +293,16 @@ export default {
     background: #ffffff;
     border-radius: 12px;
     margin-bottom: 20px;
+    position: relative;
+    a {
+      position: absolute;
+      display: inline-block;
+      right: 0;
+      top: 0;
+      width: 50px;
+      height: 100%;
+      z-index: 999;
+    }
     input::-webkit-input-placeholder {
       font-family: PingFangSC-Regular;
       font-size: 14px;
@@ -280,6 +338,9 @@ export default {
       // text-align: center;
       line-height: 14px;
     }
+    .mint-searchbar-core {
+      width: 90%;
+    }
   }
 }
 .voteList {
@@ -291,7 +352,7 @@ export default {
     float: left;
     height: 105px;
     padding: 15px;
-    width: 135px;
+    width: 8rem;
     background: #ffffff;
     // box-shadow: 0 2px 14px 0 #d3382f;
     border: 1px solid red;
@@ -468,6 +529,25 @@ export default {
       text-align: center;
       line-height: 22px;
     }
+  }
+}
+.line {
+  display: inline-block;
+  width: 1px;
+  height: 30px;
+  margin-top: 7px;
+  background-color: #dbdbdb;
+}
+/*iPhone5的适配*/
+@media only screen and (device-width: 320px) and (device-height: 568px) {
+  .voteList li {
+    width: 6.75rem;
+  }
+}
+/*iPhoneX的适配*/
+@media only screen and (device-width: 375px) and (device-height: 812px) and (-webkit-device-pixel-ratio: 3) {
+    .voteList li {
+    width:8.4375rem;
   }
 }
 </style>

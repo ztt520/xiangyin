@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-    <mt-tabbar v-model="selected" ref="footer">
+    <mt-tabbar v-model="selected" ref="footer" v-if="this.$route.name!='myVoice' && this.$route.name!='voteDetail'">
               <mt-tab-item id="home">
                  <img slot="icon" src="./assets/images/home_tab_icon_select.png" v-if="selected == 'home'">
                 <img slot="icon" src="./assets/images/home.png" v-else>
@@ -29,24 +29,28 @@
 </template>
 
 <script>
+
 export default {
   data() {
     return {
-      selected: "home"
+      selected: "home",
     };
   },
   cread() {},
   name: "App",
 
   watch: {
+    
     selected(newV) {
       //让锚点值改变
       this.$router.push({
         name: newV
       });
     }
+   
   }
 };
+
 </script>
 <style lang="less" scoped>
 .mint-tabbar {
