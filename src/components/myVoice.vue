@@ -26,7 +26,7 @@
         </div>
         <div class="fr" style="padding-top:0.25rem;">
           <div class="video1 fl" >
-            <audio ref="player" id="audio" preload="auto" src="../../static/audio/pgone.mp3"></audio>
+            <audio ref="player" id="audio2" preload="auto" src="../../static/audio/pgone.mp3"></audio>
           </div>
           <div class="delVoice fl"></div>
         </div>
@@ -74,7 +74,7 @@ export default {
     addEventListeners: function() {
       const self = this;
       self.$refs.player.addEventListener("timeupdate", self._currentTime),
-      self.$refs.player.addEventListener("canplay", self._durationTime);
+        self.$refs.player.addEventListener("canplay", self._durationTime);
     },
     removeEventListeners: function() {
       const self = this;
@@ -91,12 +91,24 @@ export default {
     },
     play() {
       var audio = document.querySelector("#audio");
-      if (!this.isPlaying) {
-        audio.play();
-        this.isPlaying = true;
-      } else {
-        audio.pause();
-        this.isPlaying = false;
+      var audio2 = document.querySelector("#audio2");
+      if (audio) {
+        if (!this.isPlaying) {
+          audio.play();
+          this.isPlaying = true;
+        } else {
+          audio.pause();
+          this.isPlaying = false;
+        }
+      }
+      if (audio2) {
+        if (!this.isPlaying) {
+          audio2.play();
+          this.isPlaying = true;
+        } else {
+          audio2.pause();
+          this.isPlaying = false;
+        }
       }
     },
     reUpload() {
