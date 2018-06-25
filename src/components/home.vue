@@ -14,8 +14,8 @@
         <div class="seconds">{{sec}}秒</div>
       </div>
       <div class="registNum">
-          <div class="applyNum">4444</div>
-          <div class="applyNum">2222</div>
+          <div class="applyNum">{{numData.countPlayer}}</div>
+          <div class="applyNum">{{numData.countTicket}}</div>
       </div>
     </div>
     <div class="megagame">
@@ -23,7 +23,7 @@
         <i></i><h2>大赛剪影</h2><i></i>
       </div>
       <div class="xy-swiper">
-        <mt-swipe :auto="4000">
+        <mt-swipe>
         <mt-swipe-item><img src="../assets/images/banner3.png" alt=""></mt-swipe-item>
         <mt-swipe-item><img src="../assets/images/banner2.png" alt=""></mt-swipe-item>
         <mt-swipe-item><img src="../assets/images/banner3.png" alt=""></mt-swipe-item>
@@ -43,11 +43,29 @@ export default {
   // },
   data() {
     return {
-       day: 0, hr: 0, min: 0, sec: 0
+      //倒计时
+       day: 0, 
+       hr: 0, 
+       min: 0, 
+       sec: 0,
+      //报名数、获赞数
+      numData:'',
     };
   },
-  mounted: function () {
-    // this.countdown();
+   created() {
+    var api_prefix =
+      process.env.NODE_ENV === "development" ? "http://test.jiujiugx.com/" : "";
+    
+  },
+  mounted() {
+    this.countdown();//倒计时开始
+    this.$http.get(api_prefix+'dialect-match/app/root/page').then(res => {
+        let data = res.body.retcontent;
+        this.numData = data;   
+        // console.log(this.numData)
+        }, res => {
+            console.log('出错了');
+        });
   },
   methods: {
     countdown: function () {
@@ -112,7 +130,7 @@ export default {
       width: 90%;
       height: 6.375rem;
       margin: 0 auto;
-      border-radius: .5rem;
+      border-radius: 0.5rem;
       div {
         display: inline-block;
         width: 45%;
@@ -120,14 +138,14 @@ export default {
         font-family: PingFangSC-Semibold;
         font-size: 1.125rem;
         color: #666666;
-        letter-spacing:0.125rem;
+        letter-spacing: 0.125rem;
         text-align: center;
         line-height: 1.125rem;
       }
     }
   }
   .xy-title {
-    padding-top:1.375rem;
+    padding-top: 1.375rem;
     h2 {
       display: inline-block;
       padding: 0 0.875rem;
@@ -142,6 +160,7 @@ export default {
       display: inline-block;
       width: 0.875rem;
       height: 0.875rem;
+      border-radius: 1px;
       background-color: #fff;
       -moz-transform: rotate(45deg);
       -webkit-transform: rotate(45deg);
@@ -158,30 +177,33 @@ export default {
       margin-top: 1.875rem;
       height: 10.3125rem;
       border-radius: 0.5rem;
-      overflow: hidden;
-      img{
+      overflow: hidden !important;
+      img {
         width: 100%;
+        height: 10.3125rem;
+        border-radius: 0.5rem;
+         overflow: hidden;
       }
-      .mint-swipe-indicator{
+      .mint-swipe-indicator {
         background: #fff !important;
       }
-      .mint-swipe-indicator.is-active{
-         background: #F85F57 !important;
+      .mint-swipe-indicator.is-active {
+        background: #f85f57 !important;
       }
     }
   }
 }
 /*iPhoneX的适配*/
 @media only screen and (device-width: 375px) and (device-height: 812px) and (-webkit-device-pixel-ratio: 3) {
-    .home {
-      padding-bottom: 5.875rem;
-    }
+  .home {
+    padding-bottom: 5.875rem;
+  }
 }
 @media only screen and (device-width: 414px) and (device-height: 736px) {
-    .home{
-      .bg {
-     padding-top: 43.125rem;
+  .home {
+    .bg {
+      padding-top: 43.125rem;
     }
-    }
+  }
 }
 </style>

@@ -78,14 +78,13 @@ mark,
 audio,
 video,
 input {
-    margin: 0;
-    padding: 0;
-    border: 0;
-    font-size: 100%;
-    font-weight: normal;
-    vertical-align: baseline;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 100%;
+  font-weight: normal;
+  vertical-align: baseline;
 }
-
 
 /* HTML5 display-role reset for older browsers */
 
@@ -99,156 +98,223 @@ header,
 menu,
 nav,
 section {
-    display: block;
+  display: block;
 }
 
 body {
-    line-height: 1;
+  line-height: 1;
 }
 
 blockquote,
 q {
-    quotes: none;
+  quotes: none;
 }
 
 blockquote:before,
 blockquote:after,
 q:before,
 q:after {
-    content: none;
+  content: none;
 }
 
 table {
-    border-collapse: collapse;
-    border-spacing: 0;
+  border-collapse: collapse;
+  border-spacing: 0;
 }
-
 
 /* custom */
 
 a {
-    color: #7e8c8d;
-    text-decoration: none;
-    -webkit-backface-visibility: hidden;
+  color: #7e8c8d;
+  text-decoration: none;
+  -webkit-backface-visibility: hidden;
 }
 
 li {
-    list-style: none;
+  list-style: none;
 }
 
 ::-webkit-scrollbar {
-    width: 5px;
-    height: 5px;
+  width: 5px;
+  height: 5px;
 }
 
 ::-webkit-scrollbar-track-piece {
-    background-color: rgba(0, 0, 0, 0.2);
-    -webkit-border-radius: 6px;
+  background-color: rgba(0, 0, 0, 0.2);
+  -webkit-border-radius: 6px;
 }
 
 ::-webkit-scrollbar-thumb:vertical {
-    height: 5px;
-    background-color: rgba(125, 125, 125, 0.7);
-    -webkit-border-radius: 6px;
+  height: 5px;
+  background-color: rgba(125, 125, 125, 0.7);
+  -webkit-border-radius: 6px;
 }
 
 ::-webkit-scrollbar-thumb:horizontal {
-    width: 5px;
-    background-color: rgba(125, 125, 125, 0.7);
-    -webkit-border-radius: 6px;
+  width: 5px;
+  background-color: rgba(125, 125, 125, 0.7);
+  -webkit-border-radius: 6px;
 }
 
 html,
 body {
-    width: 100%;
+  width: 100%;
 }
 
 body {
-    -webkit-text-size-adjust: none;
-    -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
-}
-.fl{
-    float: left;
-}
-.fr{
-    float: right;
-}
-.clearfix:after {
-    content: " ";
-    display: block;;
-    line-height: 0;
-    height: 0;
-    visibility: hidden;
-    clear: both;
-}
-/* 底部 */
-.mint-tab-item-icon {
-    width: 32px;
-    height: 32px;
-    margin: 0 auto 5px
-}
-.mint-swipe-indicator{
-    background-color: #ccc;
-    opacity: 1;
-}
-.mint-swipe-indicator.is-active {
-    background: #F35950;
-    opacity: 1;
-}
-/* 报名 */
-.mint-field-core{
-    text-align: right;
-}
-.mint-field-core::-moz-placeholder{
-    color: red;
-}
-.mint-cell-text {
-    font-family: PingFangSC-Regular;
-    font-size: 16px;
-    color: #333333;
-    line-height: 16px;
-}
-.mint-searchbar-inner .mintui-search {
-    font-size: 18px;
-    color: #d9d9d9;
-}
-.mint-cell-wrapper{
-    background-image: none !important;
-    border-bottom:1px solid #d9d9d9;
-}
-.mint-cell-value ::-webkit-input-placeholder{
-    color: #aaa;
-}
-.vux-popup-header-right{
-    color: #F35950 !important;
+  -webkit-text-size-adjust: none;
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
 }
 
-.weui-cell__hd{
-    padding-left: 10px;
+.fl {
+  float: left;
 }
+
+.fr {
+  float: right;
+}
+
+.clearfix:after {
+  content: " ";
+  display: block;
+  ;
+  line-height: 0;
+  height: 0;
+  visibility: hidden;
+  clear: both;
+}
+
+.mint-swipe-items-wrap>div {
+  border-radius: 0.5rem !important;
+  overflow: hidden;
+}
+
+/* 底部 */
+
+.mint-tab-item-icon {
+  width: 32px;
+  height: 32px;
+  margin: 0 auto 5px
+}
+
+.mint-swipe-indicator {
+  background-color: #ccc;
+  opacity: 1;
+}
+
+.mint-swipe-indicator.is-active {
+  background: #F35950;
+  opacity: 1;
+}
+
+/* 报名 */
+
+.mint-field-core {
+  text-align: right;
+}
+
+.mint-field .mint-cell-value input::-webkit-input-placeholder {
+  font-family: PingFangSC-Regular;
+  font-size: 1rem;
+  color: #aaa;
+}
+
+.mint-field .mint-cell-value input::-moz-placeholder {
+  /* Mozilla Firefox 19+ */
+  font-family: PingFangSC-Regular;
+  font-size: 1rem;
+  color: #aaa;
+}
+
+.mint-field .mint-cell-value input:-moz-placeholder {
+  /* Mozilla Firefox 4 to 18 */
+  font-family: PingFangSC-Regular;
+  font-size: 1rem;
+  color: #aaa;
+}
+
+.mint-field .mint-cell-value input:-ms-input-placeholder {
+  /* Internet Explorer 10-11 */
+  font-family: PingFangSC-Regular;
+  font-size: 1rem;
+  color: #aaa;
+}
+
+.mint-cell-text {
+  font-family: PingFangSC-Regular;
+  font-size: 16px;
+  color: #333333;
+  line-height: 16px;
+}
+
+.mint-searchbar-inner .mintui-search {
+  font-size: 18px;
+  color: #d9d9d9;
+}
+
+.mint-cell-wrapper {
+  background-image: none !important;
+  border-bottom: 0.0625rem solid #d9d9d9;
+  padding: 0 10px 0 0;
+}
+/* .border { border: 1px solid #999 } */
+
+
+.mint-cell-wrapper:last-child {
+  border-bottom: none;
+}
+
+.mint-cell-value ::-webkit-input-placeholder {
+  color: #aaa;
+}
+
+.vux-popup-header-right {
+  color: #F35950 !important;
+}
+
+.weui-cell__hd {
+  padding-left: 15px;
+}
+
 .vux-cell-box:not(:first-child):before {
-    content: " ";
-    position: absolute;
-    top: 0;
-    width: 100%;
-    height: 1px;
-    border-top: none !important;
-    /* left: 15px; */
+  content: " ";
+  position: absolute;
+  top: 0;
+  width: 100%;
+  height: 1px;
+  border-top: none !important;
+  /* left: 15px; */
 }
+
 .vux-cell-box::after {
-    content: " ";
-    position: absolute;
-    bottom: 0;
-    width: 100%;
-    height: 1px;
-    border-bottom:1px solid #d9d9d9 !important;
-    /* left: 15px; */
+  content: " ";
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  height: 1px;
+  border-bottom: 1px solid #d9d9d9 !important;
+  left: 15px;
 }
-.vux-popup-picker-placeholder{
-    color:#aaa !important;
+
+.vux-popup-picker-placeholder {
+  color: #aaa !important;
+  font-size: 1rem;
 }
-.vux-cell-primary.vux-popup-picker-select-box{
-    position: absolute;
-    right: 10px;
-    top: 0;
+
+.vux-cell-primary.vux-popup-picker-select-box {
+  position: absolute;
+  right: 10px;
+  top: 0;
 }
+.mint-cell:last-child{
+    background-image: none;
+}
+@media screen and (-webkit-min-device-pixel-ratio: 2) {
+    .mint-cell-wrapper { border-bottom: 0.5px solid #d9d9d9 }
+    .vux-cell-box::after{border-bottom: 0.5px solid #d9d9d9 !important;}
+}
+@media screen and (-webkit-min-device-pixel-ratio: 3) {
+    .mint-cell-wrapper { border-bottom: 0.333333px solid #d9d9d9 }
+    .vux-cell-box::after{border-bottom:0.333333px solid #d9d9d9 !important;}
+}
+

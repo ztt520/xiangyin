@@ -13,7 +13,7 @@
                 <p>报名</p>
               </mt-tab-item>
               <mt-tab-item id="vote">
-                <img slot="icon" src="./assets/images/vote_tab_icon_select@1x.png" v-if="selected =='vote'">
+                <img slot="icon" src="./assets/images/vote_tab_icon_select.png" v-if="selected =='vote'">
                 <img slot="icon" src="./assets/images/vote.png" v-else>
                 <p>投票</p>
               
@@ -59,6 +59,7 @@ export default {
   bottom: 0;
   z-index: 99;
   background-color: #fff;
+  box-shadow: 0 -2px 14px 0 rgba(0,0,0,0.10);
   .mint-tab-item {
     color: #aaa;
   }
